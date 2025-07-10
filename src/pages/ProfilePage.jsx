@@ -3,6 +3,8 @@ import { NavBar } from "../components/NavBar";
 
 const ProfilePage = () => {
   const [products, setProducts] = useState([]);
+  const [editProductId, setEditProductId] = useState("");
+  const [updatedPrice, setUpdatedPrice] = useState(-1);
 
   const getdata = async () => {
     try {
@@ -50,6 +52,33 @@ const ProfilePage = () => {
     // console.log(title, price, description, quantity);
   };
 
+  const handelEdit = async (productId) => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/products/${productId}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            price: updatedPrice,
+          }),
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (res.status === 200) {
+        console.log("success fully updated");
+        alert("success fully updated");
+        setEditProductId("");
+        getdata();
+      } else {
+        const result = res.json();
+        console.log(result.message);
+      }
+    } catch (err) {
+      console.log("error in editing product  -->  ", err.message);
+    }
+  };
   useEffect(() => {
     getdata();
   }, []);
@@ -110,12 +139,52 @@ const ProfilePage = () => {
               <h1 className="text-lg font-semibold text-gray-800 mb-2">
                 {elem.title}
               </h1>
-              <p className="text-gray-600 mb-1"> Price: ₹{elem.price}</p>
+
+              {elem._id === editProductId ? (
+                <>
+                  <input
+                    className="border-1  py-1 px-2 rounded-md"
+                    name="price"
+                    type="number"
+                    value={updatedPrice}
+                    onChange={(e) => {
+                      setUpdatedPrice(e.target.value);
+                    }}
+                  ></input>
+                  <button
+                    onClick={() => {
+                      setEditProductId("");
+                    }}
+                    className="border-1 py-1 px-2 rounded-md "
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      handelEdit(elem._id);
+                    }}
+                    className="border-1 py-1 px-2 rounded-md "
+                  >
+                    Save
+                  </button>
+                </>
+              ) : (
+                <p className="text-gray-600 mb-1"> Price: ₹{elem.price}</p>
+              )}
+
               <p className="text-gray-600 mb-1">
                 {" "}
                 Description: {elem.description}
               </p>
               <p className="text-gray-600"> Quantity: {elem.quantity}</p>
+              <button
+                onClick={() => {
+                  setEditProductId(elem._id);
+                }}
+                className="border-1 py-1 px-2 rounded-md "
+              >
+                Edit
+              </button>
             </div>
           );
         })}
