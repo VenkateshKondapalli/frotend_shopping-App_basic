@@ -4,9 +4,9 @@ import { ViewPage } from "./pages/ViewPage";
 import { SearchPage } from "./pages/SearchPage";
 import { CartPage } from "./pages/CartPage";
 import { ProfilePage } from "./pages/ProfilePage";
-import { SignupPage } from "./pages/SignUpPage";
 import { LoginPage } from "./pages/LoginPage";
 import { PageNotFound } from "./pages/PageNotFound";
+import { SignupPage } from "./pages/SignUpPage";
 
 const App = () => {
   return (
