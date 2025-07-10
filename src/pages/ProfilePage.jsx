@@ -169,7 +169,17 @@ const ProfilePage = () => {
                   </button>
                 </>
               ) : (
-                <p className="text-gray-600 mb-1"> Price: ₹{elem.price}</p>
+                <>
+                  <p className="text-gray-600 mb-1"> Price: ₹{elem.price}</p>
+                  <button
+                    onClick={() => {
+                      setEditProductId(elem._id);
+                    }}
+                    className="border-1 py-1 px-2 rounded-md "
+                  >
+                    Edit
+                  </button>
+                </>
               )}
 
               <p className="text-gray-600 mb-1">
@@ -177,14 +187,6 @@ const ProfilePage = () => {
                 Description: {elem.description}
               </p>
               <p className="text-gray-600"> Quantity: {elem.quantity}</p>
-              <button
-                onClick={() => {
-                  setEditProductId(elem._id);
-                }}
-                className="border-1 py-1 px-2 rounded-md "
-              >
-                Edit
-              </button>
             </div>
           );
         })}

@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import { useMyContext } from "../context/MyContext";
 
 const NavBar = () => {
+  const { count } = useMyContext();
   return (
     <div className="py-4 px-6 flex bg-blue-100 justify-between">
       <Link to="/" className="font-bold text-blue-700">
@@ -23,7 +25,9 @@ const NavBar = () => {
           SignUp
         </Link>
       </div>
-      <div className="bg-black h-8 w-8 rounded-full"></div>
+      <div className="bg-indigo-400 h-8 w-8 rounded-full flex  items-center justify-center ">
+        <p className=" text-zinc-800  font-bold">{count}</p>
+      </div>
     </div>
   );
 };
