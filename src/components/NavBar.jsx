@@ -3,7 +3,9 @@ import { Link } from "react-router";
 const NavBar = () => {
   return (
     <div className="py-4 px-6 flex bg-blue-100 justify-between">
-      <h1 className="font-bold text-blue-700">Shopping App</h1>
+      <Link to="/" className="font-bold text-blue-700">
+        Shopping App
+      </Link>
       <div className="flex gap-2">
         <input
           className="border border-blue-300 py-1 px-2 rounded-md text-gray-800"
