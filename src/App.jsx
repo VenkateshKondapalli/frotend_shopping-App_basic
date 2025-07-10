@@ -6,7 +6,7 @@ import { CartPage } from "./pages/CartPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { LoginPage } from "./pages/LoginPage";
 import { PageNotFound } from "./pages/PageNotFound";
-import { SignupPage } from "./pages/SignUpPage";
+import { SignupPage } from "./pages/SignupPage";
 
 const App = () => {
   return (
