@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { NavBar } from "../components/NavBar";
+import { useMyContext } from "../context/MyContext";
 
 const ProfilePage = () => {
   const [products, setProducts] = useState([]);
   const [editProductId, setEditProductId] = useState("");
   const [updatedPrice, setUpdatedPrice] = useState(-1);
+  const { setCount } = useMyContext();
 
   const getdata = async () => {
     try {
@@ -187,6 +189,14 @@ const ProfilePage = () => {
                 Description: {elem.description}
               </p>
               <p className="text-gray-600"> Quantity: {elem.quantity}</p>
+              <button
+                className="border-1 py-1 px-2 rounded-md "
+                onClick={() => {
+                  setCount((prev) => prev + 1);
+                }}
+              >
+                ++
+              </button>
             </div>
           );
         })}

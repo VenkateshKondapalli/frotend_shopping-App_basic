@@ -5,9 +5,6 @@ const HomePage = () => {
   return (
     <div>
       <NavBar />
-      <main>
-        <h1>HomePage</h1>
-      </main>
       <Footer />
     </div>
   );

@@ -17,11 +17,14 @@ const NavBar = () => {
           Search
         </button>
       </div>
-      <div className="flex gap-2">
-        <Link className="text-blue-700 hover:underline" to="/profile">
+      <div className="flex gap-2 justify-between">
+        <Link
+          className="text-blue-700 hover:underline font-serif"
+          to="/profile"
+        >
           Profile
         </Link>
-        <Link className="text-blue-700 hover:underline" to="/signup">
+        <Link className="text-blue-700 hover:underline font-serif" to="/signup">
           SignUp
         </Link>
       </div>
