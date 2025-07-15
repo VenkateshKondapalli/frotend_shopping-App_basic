@@ -17,6 +17,7 @@ const LoginPage = () => {
         `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
         {
           method: "POST",
+          credentials: "include",
           body: JSON.stringify(obj),
           headers: {
             "content-type": "application/json",
